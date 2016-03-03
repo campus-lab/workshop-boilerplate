@@ -4,7 +4,6 @@ var fs = require('fs');
 var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
 var webpack = require('webpack');
-var webpackDevMiddleware = require('webpack-dev-middleware');
 var webpackConfig = require('./../webpack.config.js');
 
 gulp.task('serve', ['build'], function() {
