@@ -3,11 +3,9 @@
 var fs = require('fs');
 var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
-var webpack = require('webpack');
-var webpackConfig = require('./../webpack.config.js');
+var reload = browserSync.reload;
 
 gulp.task('serve', ['build'], function() {
-    var bundler = webpack(webpackConfig);
     browserSync.init({
         server: {
             baseDir: "./",
@@ -15,7 +13,7 @@ gulp.task('serve', ['build'], function() {
         }
     });
 
-    gulp.watch("dist/*.js").on('change', browserSync.reload);
-    gulp.watch("index.html").on('change', browserSync.reload);
+    gulp.watch("dist/*.js").on('change', reload);
+    gulp.watch("index.html").on('change', reload);
 });
 

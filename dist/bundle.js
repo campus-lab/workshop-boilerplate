@@ -60,7 +60,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	__webpack_require__(162);
+	__webpack_require__(164);
 
 	_reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById('app'));
 
@@ -19683,70 +19683,51 @@
 
 	var _reactTimeless2 = _interopRequireDefault(_reactTimeless);
 
+	var _GoatList = __webpack_require__(162);
+
+	var _GoatList2 = _interopRequireDefault(_GoatList);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var App = _react2.default.createClass({
 	    displayName: 'App',
 	    getInitialState: function getInitialState() {
 	        return {
-	            maxCursorTimestamp: 0,
-	            minCursorTimestamp: 0
+	            maxTimestamp: 0,
+	            minTimestamp: 0,
+	            dates: [{ start: 1104537600 }, { start: 1451606400 }],
+	            goats: [{
+	                url: 'https://i.ytimg.com/vi/nlYlNF30bVg/hqdefault.jpg',
+	                displayName: 'Goat 1',
+	                description: 'happy goat',
+	                published: 1167609600
+	            }, {
+	                url: 'http://cdn.acidcow.com/pics/20100514/funny_goats_02.jpg',
+	                displayName: 'Goat 2',
+	                description: 'mad goat',
+	                published: 1230768000
+	            }, {
+	                url: 'http://wanna-joke.com/wp-content/uploads/2014/02/funny-gif-practicing-how-to-goat.gif',
+	                displayName: 'Goat 3',
+	                description: 'acrobatic goats',
+	                published: 1262304000
+	            }, {
+	                url: 'http://i.imgur.com/PwYBpGP.gif',
+	                displayName: 'Goat 4',
+	                description: 'winter goat',
+	                published: 1325376000
+	            }]
 	        };
 	    },
 	    render: function render() {
-	        var _this = this;
-
-	        var dates = [{
-	            start: 1104537600
-	        }, {
-	            start: 1451606400
-	        }];
-
-	        var goats = [{
-	            url: 'https://i.ytimg.com/vi/nlYlNF30bVg/hqdefault.jpg',
-	            displayName: 'Goat 1',
-	            published: 1167609600
-	        }, {
-	            url: 'http://cdn.acidcow.com/pics/20100514/funny_goats_02.jpg',
-	            displayName: 'Goat 2',
-	            published: 1230768000
-	        }, {
-	            url: 'http://wanna-joke.com/wp-content/uploads/2014/02/funny-gif-practicing-how-to-goat.gif',
-	            displayName: 'Goat 3',
-	            published: 1262304000
-	        }, {
-	            url: 'http://i.imgur.com/PwYBpGP.gif',
-	            displayName: 'Goat 4',
-	            published: 1325376000
-	        }];
-
-	        var renderedGoats = 0;
-
 	        return _react2.default.createElement(
 	            'div',
 	            null,
-	            _react2.default.createElement(_reactTimeless2.default, { dates: dates, onChange: this._handleChange }),
+	            _react2.default.createElement(_reactTimeless2.default, { dates: this.state.dates, onChange: this._handleChange }),
 	            _react2.default.createElement(
 	                'div',
 	                null,
-	                _react2.default.createElement(
-	                    'ul',
-	                    null,
-	                    goats.map(function (item, key) {
-	                        var html = null;
-	                        if (item.published >= _this.state.minCursorTimestamp && item.published <= _this.state.maxCursorTimestamp) {
-	                            renderedGoats++;
-	                            html = _react2.default.createElement(
-	                                'li',
-	                                null,
-	                                _react2.default.createElement('img', { src: item.url }),
-	                                item.displayName
-	                            );
-	                        }
-	                        return html;
-	                    }),
-	                    this._getFeedback(renderedGoats)
-	                )
+	                _react2.default.createElement(_GoatList2.default, { items: this.state.goats, maxTimestamp: this.state.maxTimestamp, minTimestamp: this.state.minTimestamp })
 	            )
 	        );
 	    },
@@ -19756,22 +19737,9 @@
 
 
 	        this.setState({
-	            maxCursorTimestamp: maxCursorTimestamp,
-	            minCursorTimestamp: minCursorTimestamp
+	            maxTimestamp: maxCursorTimestamp,
+	            minTimestamp: minCursorTimestamp
 	        });
-	    },
-	    _getFeedback: function _getFeedback(renderedGoats) {
-	        var html = null;
-
-	        if (renderedGoats === 0) {
-	            html = _react2.default.createElement(
-	                'li',
-	                null,
-	                'Can\'t find goats in this time period! :('
-	            );
-	        }
-
-	        return html;
 	    }
 	});
 
@@ -20120,13 +20088,143 @@
 /* 162 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _GoatCard = __webpack_require__(163);
+
+	var _GoatCard2 = _interopRequireDefault(_GoatCard);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var GoatList = _react2.default.createClass({
+	    displayName: 'GoatList',
+
+	    propTypes: {
+	        maxTimestamp: _react2.default.PropTypes.number.isRequired,
+	        minTimestamp: _react2.default.PropTypes.number.isRequired,
+	        items: _react2.default.PropTypes.array.isRequired
+	    },
+
+	    getDefaultProps: function getDefaultProps() {
+	        return {
+	            maxTimestamp: 0,
+	            minTimestamp: 0,
+	            items: []
+	        };
+	    },
+	    render: function render() {
+	        var _this = this;
+
+	        var goats = this.props.items;
+	        var renderedGoats = 0;
+
+	        return _react2.default.createElement(
+	            'ul',
+	            null,
+	            goats.map(function (item, key) {
+	                var html = null;
+	                console.log(item.published);
+	                console.log(_this.props.minTimestamp);
+	                if (item.published >= _this.props.minTimestamp && item.published <= _this.props.maxTimestamp) {
+	                    renderedGoats++;
+	                    html = _react2.default.createElement(
+	                        'li',
+	                        null,
+	                        _react2.default.createElement(_GoatCard2.default, { item: item })
+	                    );
+	                }
+	                return html;
+	            }),
+	            this._getFeedback(renderedGoats)
+	        );
+	    },
+	    _getFeedback: function _getFeedback(renderedGoats) {
+	        var html = null;
+
+	        if (renderedGoats === 0) {
+	            html = _react2.default.createElement(
+	                'li',
+	                null,
+	                'Can\'t find goats in this time period! :('
+	            );
+	        }
+
+	        return html;
+	    }
+	});
+
+	exports.default = GoatList;
+
+/***/ },
+/* 163 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var GoatCard = _react2.default.createClass({
+	    displayName: 'GoatCard',
+
+	    propTypes: {
+	        item: _react2.default.PropTypes.object.isRequired
+	    },
+
+	    getDefaultProps: function getDefaultProps() {
+	        return {
+	            item: {}
+	        };
+	    },
+	    render: function render() {
+	        var item = this.props.item;
+
+	        return _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement('img', { src: item.url }),
+	            _react2.default.createElement(
+	                'h4',
+	                null,
+	                item.displayName
+	            ),
+	            _react2.default.createElement(
+	                'p',
+	                null,
+	                item.description
+	            )
+	        );
+	    }
+	});
+
+	exports.default = GoatCard;
+
+/***/ },
+/* 164 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(163);
+	var content = __webpack_require__(165);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(165)(content, {});
+	var update = __webpack_require__(167)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -20143,10 +20241,10 @@
 	}
 
 /***/ },
-/* 163 */
+/* 165 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(164)();
+	exports = module.exports = __webpack_require__(166)();
 	// imports
 
 
@@ -20157,7 +20255,7 @@
 
 
 /***/ },
-/* 164 */
+/* 166 */
 /***/ function(module, exports) {
 
 	/*
@@ -20213,7 +20311,7 @@
 
 
 /***/ },
-/* 165 */
+/* 167 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
