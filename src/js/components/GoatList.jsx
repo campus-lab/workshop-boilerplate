@@ -22,15 +22,13 @@ const GoatList = React.createClass({
         let renderedGoats = 0;
 
         return (
-            <ul>
+            <ul className="goat-list row">
                 {goats.map((item, key) => {
                     let html = null;
-                    console.log(item.published);
-                    console.log(this.props.minTimestamp);
                     if (item.published >= this.props.minTimestamp && item.published <= this.props.maxTimestamp) {
                         renderedGoats++;
                         html = (
-                            <li>
+                            <li className="column small-12 medium-4">
                                 <GoatCard item={item} />
                             </li>
                         )

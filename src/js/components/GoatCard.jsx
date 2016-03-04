@@ -16,10 +16,14 @@ const GoatCard = React.createClass({
         const item = this.props.item;
 
         return (
-            <div>
-                <img src={item.url} />
-                <h4>{item.displayName}</h4>
-                <p>{item.description}</p>
+            <div className="goat-card">
+                <div className="goat-card__img">
+                    <img src={item.url} />
+                </div>
+                <div className="goat-card__details">
+                    <h4>{item.displayName}</h4>
+                    <p>{item.description}</p>
+                </div>
             </div>
         );
     }
