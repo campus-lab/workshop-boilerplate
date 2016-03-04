@@ -74,9 +74,12 @@ const App = React.createClass({
     render() {
         return (
             <div>
-                <ReactTimeless dates={this.state.dates} onChange={this._handleChange} />
+                <h1>Funny Goats!</h1>
                 <div>
                     <GoatList items={this.state.goats} maxTimestamp={this.state.maxTimestamp} minTimestamp={this.state.minTimestamp}  />
+                </div>
+                <div className="supawrapper">
+                    <ReactTimeless dates={this.state.dates} onChange={this._handleChange} />
                 </div>
             </div>
         );

@@ -1,1 +1,116 @@
+// IMPORT VENDORS
+@import "vendor/foundation/foundation";
 @import "vendor/react-timeless";
+
+
+#app {
+    position: relative;
+    z-index: 1;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 5rem 0 300px;
+}
+
+ul {
+    list-style: none;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('http://wallpapertvs.com/wp-content/uploads/2014/10/cute_goat_baby_animals-1920x1200.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    opacity: 0.6;
+}
+
+.supawrapper {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 200px;
+
+    padding: 0 5rem .5rem;
+    background: #9C27B0;
+    border-top: 5px solid yellow;
+}
+
+h1 {
+    text-align: center;
+    font-size: 5rem;
+    margin: 0 0 5rem;
+    color: #9C27B0;
+    text-shadow: 4px 4px 0px #E91E63, -4px -4px 0px yellow;
+    text-transform: uppercase;
+}
+
+.goat-list {
+
+}
+
+.goat-card {
+    overflow: hidden;
+    background: #F3E5F5;
+    border-bottom: 3px solid #9C27B0;
+    margin: 0 0 1rem;
+    border-radius: 10px 50px;
+
+    .goat-card__img {
+        height: 0;
+        padding-bottom: 75%;
+
+        background: url(http://i.imgur.com/HegZkkc.gif);
+        background-size: 100%;
+        background-repeat: no-repeat;
+
+        img {
+
+        }
+    }
+
+    .goat-card__details {
+        padding: 1rem;
+
+        h4 {
+
+        }
+
+        p {
+        }
+    }
+}
+
+
+/*
+ *
+ * MEDIA QUERIES
+ */
+
+@include breakpoint(small) { }
+@include breakpoint(small only) { }
+
+@include breakpoint(medium) { }
+@include breakpoint(medium only) { }
+
+@include breakpoint(large) { }
+@include breakpoint(large only) { }
