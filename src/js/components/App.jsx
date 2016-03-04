@@ -27,7 +27,7 @@ const App = React.createClass({
                     published: 1230768000
                 },
                 {
-                    url: 'http://www.hallfarmpark.co.uk/wp-content/uploads/2014/03/goat-walk1.jpg',
+                    url: 'https://handmadelives.files.wordpress.com/2013/11/goat-best.jpg',
                     displayName: 'Alexis',
                     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                     published: 1262304000
@@ -41,7 +41,7 @@ const App = React.createClass({
                 {
                     url: 'http://creepy.blogs.com/photos/uncategorized/2007/11/27/goat.jpg',
                     displayName: 'Amelia',
-                    description: 'winter goat',
+                    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                     published: 1355376000
                 },
                 {
