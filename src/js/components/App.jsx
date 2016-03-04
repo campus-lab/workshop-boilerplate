@@ -3,15 +3,17 @@ import React from 'react';
 import ReactTimeless from 'react-timeless';
 
 import GoatList from './GoatList';
+import Title from './Title';
 
 const App = React.createClass({
     getInitialState() {
         return {
+            word: 'funny goats',
             maxTimestamp: 0,
             minTimestamp: 0,
             dates: [
-                { start: 1104537600 },
-                { start: 1451606400 }
+                {start: 1104537600},
+                {start: 1451606400}
             ],
             goats: [
                 {
@@ -74,12 +76,15 @@ const App = React.createClass({
     render() {
         return (
             <div>
-                <h1>Funny Goats!</h1>
                 <div>
-                    <GoatList items={this.state.goats} maxTimestamp={this.state.maxTimestamp} minTimestamp={this.state.minTimestamp}  />
+                    <Title word={this.state.word} />
+                </div>
+                <div>
+                    <GoatList items={this.state.goats} maxTimestamp={this.state.maxTimestamp}
+                              minTimestamp={this.state.minTimestamp}/>
                 </div>
                 <div className="supawrapper">
-                    <ReactTimeless dates={this.state.dates} onChange={this._handleChange} />
+                    <ReactTimeless dates={this.state.dates} onChange={this._handleChange}/>
                 </div>
             </div>
         );

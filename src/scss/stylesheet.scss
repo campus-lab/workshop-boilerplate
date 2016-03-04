@@ -2,74 +2,113 @@
 @import "vendor/foundation/foundation";
 @import "vendor/react-timeless";
 
+// FUNCTION TO RANDOM COLOR
+@function getRGB() {
+  $r: random(256) - 1;
+  $g: random(256) - 1;
+  $b: random(256) - 1;
+  @return rgb($r, $g, $b);
+}
+
+// VARIABLES
+$colors: (getRGB(), getRGB(), getRGB(), getRGB(), getRGB());
+$len: str-length("FUNNY GOATS");
+$wordDuration: .7s;
+$letterDuration: 1.5s;
+$increment: $letterDuration / $len;
+
+// KEYFRAMES
+@keyframes letterAnim {
+  0% {
+    color: nth($colors, 1);
+  }
+  25% {
+    color: nth($colors, 2);
+  }
+  50% {
+    color: nth($colors, 3);
+  }
+  75% {
+    color: nth($colors, 4);
+  }
+  100% {
+    color: nth($colors, 5);
+  }
+}
+
+// STYLES
 
 #app {
-    position: relative;
-    z-index: 1;
+  position: relative;
+  z-index: 1;
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;          /* Likely future */
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    margin: 5rem 0 300px;
+  margin: 5rem 0 300px;
 }
 
 ul {
-    list-style: none;
+  list-style: none;
 }
 
 p {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('http://wallpapertvs.com/wp-content/uploads/2014/10/cute_goat_baby_animals-1920x1200.jpg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    opacity: 0.6;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('http://wallpapertvs.com/wp-content/uploads/2014/10/cute_goat_baby_animals-1920x1200.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  opacity: 0.6;
 }
 
 .supawrapper {
-    position: fixed;
-    bottom: 0;
-    left: 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    width: 100%;
-    height: 157px;
+  width: 100%;
+  height: 157px;
 
-    padding: 1rem 5rem 0rem;
+  padding: 1rem 5rem 0rem;
 
-    background: -moz-linear-gradient(90deg, rgba(156,39,176,1) 0%, rgba(255,255,0,1) 100%); /* ff3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255,255,0,1)), color-stop(100%, rgba(156,39,176,1))); /* safari4+,chrome */
-    background: -webkit-linear-gradient(90deg, rgba(156,39,176,1) 0%, rgba(255,255,0,1) 100%); /* safari5.1+,chrome10+ */
-    background: -o-linear-gradient(90deg, rgba(156,39,176,1) 0%, rgba(255,255,0,1) 100%); /* opera 11.10+ */
-    background: -ms-linear-gradient(90deg, rgba(156,39,176,1) 0%, rgba(255,255,0,1) 100%); /* ie10+ */
-    background: linear-gradient(0deg, rgba(156,39,176,1) 0%, rgba(255,255,0,1) 100%); /* w3c */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFFF00', endColorstr='#9C27B0',GradientType=0 ); /* ie6-9 */
+  background: -moz-linear-gradient(90deg, rgba(156, 39, 176, 1) 0%, rgba(255, 255, 0, 1) 100%); /* ff3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 0, 1)), color-stop(100%, rgba(156, 39, 176, 1))); /* safari4+,chrome */
+  background: -webkit-linear-gradient(90deg, rgba(156, 39, 176, 1) 0%, rgba(255, 255, 0, 1) 100%); /* safari5.1+,chrome10+ */
+  background: -o-linear-gradient(90deg, rgba(156, 39, 176, 1) 0%, rgba(255, 255, 0, 1) 100%); /* opera 11.10+ */
+  background: -ms-linear-gradient(90deg, rgba(156, 39, 176, 1) 0%, rgba(255, 255, 0, 1) 100%); /* ie10+ */
+  background: linear-gradient(0deg, rgba(156, 39, 176, 1) 0%, rgba(255, 255, 0, 1) 100%); /* w3c */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFF00', endColorstr='#9C27B0', GradientType=0); /* ie6-9 */
 
-    box-shadow: 0 0 50px 20px #FFFF00;
+  box-shadow: 0 0 50px 20px #FFFF00;
 }
 
 h1 {
-    text-align: center;
-    font-size: 5rem;
-    margin: 0 0 5rem;
-    color: #9C27B0;
-    text-shadow: 4px 4px 0px #E91E63, -4px -4px 0px yellow;
-    text-transform: uppercase;
+  text-align: center;
+  font-size: 5rem;
+  margin: 0 0 5rem;
+  color: #9C27B0;
+  text-shadow: 4px 4px 0px #E91E63, -4px -4px 0px yellow;
+  text-transform: uppercase;
 }
 
 .goat-list {
@@ -77,50 +116,76 @@ h1 {
 }
 
 .goat-card {
-    overflow: hidden;
-    background: #F3E5F5;
-    border-bottom: 3px solid #9C27B0;
-    margin: 0 0 1rem;
-    border-radius: 10px 50px;
+  overflow: hidden;
+  background: #F3E5F5;
+  border-bottom: 3px solid #9C27B0;
+  margin: 0 0 1rem;
+  border-radius: 10px 50px;
 
-    .goat-card__img {
-        height: 0;
-        padding-bottom: 75%;
+  .goat-card__img {
+    height: 0;
+    padding-bottom: 75%;
 
-        background: url(http://i.imgur.com/HegZkkc.gif);
-        background-size: 100%;
-        background-repeat: no-repeat;
+    background: url(http://i.imgur.com/HegZkkc.gif);
+    background-size: 100%;
+    background-repeat: no-repeat;
 
-        img {
+    img {
 
-        }
+    }
+  }
+
+  .goat-card__details {
+    padding: 1rem 2rem;
+
+    h4 {
+      margin: 0;
+      color: darken(#9C27B0, 8%);
     }
 
-    .goat-card__details {
-        padding: 1rem 2rem;
-
-        h4 {
-            margin: 0;
-            color: darken(#9C27B0, 8%);
-        }
-
-        p {
-            color: #9C27B0;
-        }
+    p {
+      color: #9C27B0;
     }
+  }
 }
 
+#word {
+  display: inline-block;
+  font-size: 80px;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  span {
+    color: rgba(0, 0, 0, 0);
+    animation: $letterDuration letterAnim infinite;
+    @for $i from 0 to $len {
+      &.l#{$i} {
+        animation-delay: $i * $increment;
+      }
+    }
+  }
+}
 
 /*
  *
  * MEDIA QUERIES
  */
 
-@include breakpoint(small) { }
-@include breakpoint(small only) { }
+@include breakpoint(small) {
+}
 
-@include breakpoint(medium) { }
-@include breakpoint(medium only) { }
+@include breakpoint(small only) {
+}
 
-@include breakpoint(large) { }
-@include breakpoint(large only) { }
+@include breakpoint(medium) {
+}
+
+@include breakpoint(medium only) {
+}
+
+@include breakpoint(large) {
+}
+
+@include breakpoint(large only) {
+}

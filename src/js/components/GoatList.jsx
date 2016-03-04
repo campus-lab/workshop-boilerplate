@@ -28,7 +28,7 @@ const GoatList = React.createClass({
                     if (item.published >= this.props.minTimestamp && item.published <= this.props.maxTimestamp) {
                         renderedGoats++;
                         html = (
-                            <li className="column small-12 medium-4">
+                            <li key={key} className="column small-12 medium-4">
                                 <GoatCard item={item} />
                             </li>
                         )
