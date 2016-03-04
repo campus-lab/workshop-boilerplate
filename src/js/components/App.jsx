@@ -41,7 +41,7 @@ const App = React.createClass({
                 {
                     url: 'http://creepy.blogs.com/photos/uncategorized/2007/11/27/goat.jpg',
                     displayName: 'Amelia',
-                    description: 'winter goat',
+                    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                     published: 1355376000
                 },
                 {
