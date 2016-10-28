@@ -1,4 +1,5 @@
 'use strict';
+
 import React from 'react';
 
 const GoatCard = React.createClass({

@@ -1,4 +1,5 @@
 'use strict';
+
 import React from 'react';
 import GoatCard from './GoatCard';
 
@@ -41,16 +42,9 @@ const GoatList = React.createClass({
     },
 
     _getFeedback(renderedGoats) {
-        let html = null;
-
-        if ( renderedGoats === 0 ) {
-            html = (<li>Can't find goats in this time period! :(</li>)
-        }
-
-        return html;
+        if (renderedGoats !== 0) return false;
+        return <li>No goatz phound! :(</li>;
     }
-
-
 });
 
 export default GoatList;

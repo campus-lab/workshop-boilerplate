@@ -1,4 +1,5 @@
 'use strict';
+
 import React from 'react';
 import ReactTimeless from 'react-timeless';
 
@@ -8,13 +9,11 @@ import Title from './Title';
 const App = React.createClass({
     getInitialState() {
         return {
-            word: 'funny goats',
-            maxTimestamp: 0,
-            minTimestamp: 0,
-            dates: [
-                {start: 1104537600},
-                {start: 1451606400}
-            ],
+            title: 'funny goats',
+            minTimestamp: 1167609600,
+            maxTimestamp: 1335376000,
+            minCursorDefaultTimestamp: 1167609600,
+            maxCursorDefaultTimestamp: 1335376000,
             goats: [
                 {
                     url: 'http://funny-wall.com/wp-content/uploads/Funny-Goat-Drinking-Beer.jpg',
@@ -65,7 +64,7 @@ const App = React.createClass({
                     published: 1395376000
                 },
                 {
-                    url: 'http://www.hobbyfarms.com/images/editorial-blog/cyndi-cady/choosing-animals_800.jpg',
+                    url: 'http://www.freakingnews.com/pictures/130500/Goat--130756.jpg',
                     displayName: 'Nora',
                     description: 'For goat’s sake, that’s enough',
                     published: 1335376000
@@ -73,35 +72,33 @@ const App = React.createClass({
             ]
         }
     },
+
     render() {
+        console.log(this.state);
         return (
             <div>
-                <div>
-                    <Title word={this.state.word} />
-                </div>
-                <div>
-                    <GoatList items={this.state.goats} maxTimestamp={this.state.maxTimestamp}
-                              minTimestamp={this.state.minTimestamp}/>
-                </div>
+                <div><Title title={this.state.title} /></div>
+                <div><GoatList items={this.state.goats} minTimestamp={this.state.minTimestamp} maxTimestamp={this.state.maxTimestamp} /></div>
                 <div className="supawrapper">
-                    <ReactTimeless dates={this.state.dates} onChange={this._handleChange}/>
+                    <ReactTimeless
+                        minTimestamp={this.state.minTimestamp}
+                        maxTimestamp={this.state.maxTimestamp}
+                        minCursorDefaultTimestamp={this.state.minCursorDefaultTimestamp}
+                        maxCursorDefaultTimestamp={this.state.maxCursorDefaultTimestamp}
+                        onChange={this._handleChange} />
                 </div>
             </div>
         );
     },
 
     _handleChange(data){
-        const {maxCursorTimestamp, minCursorTimestamp} = data;
+        const {minCursorTimestamp, maxCursorTimestamp} = data;
 
-        this.setState(
-            {
-                maxTimestamp: maxCursorTimestamp,
-                minTimestamp: minCursorTimestamp
-            }
-        )
+        this.setState({
+            minTimestamp: minCursorTimestamp,
+            maxTimestamp: maxCursorTimestamp
+        });
     }
-
-
 });
 
 export default App;
