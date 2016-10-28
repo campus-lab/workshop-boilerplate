@@ -2,6 +2,8 @@
 
 A simple starter boilerplate for a React application
 
+Presentation [here](https://slides.com/guilhermecabral/bmw_v2/live#/).
+
 ## Installation
 
 ```
