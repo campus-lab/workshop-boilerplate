@@ -48,4 +48,4 @@ npm install -g gulp
 ```
 -
 
-Made with ♥ by Daniel Rodrigues ([danizep](https://github.com/danizep)), Alexandre Neves ([alexandreneves](https://github.com/alexandreneves)), João Pina ([tomahock](https://github.com/tomahock)) and José Cunha Fonte ([jcunhafonte](https://github.com/jcunhafonte))
+Made with ♥ by  Alexandre Neves ([alexandreneves](https://github.com/alexandreneves)), Daniel Rodrigues ([danizep](https://github.com/danizep)), Guilherme Cabral ([guivazcabral](https://github.com/guivazcabral)), João Pina ([tomahock](https://github.com/tomahock)) and José Cunha Fonte ([jcunhafonte](https://github.com/jcunhafonte))
